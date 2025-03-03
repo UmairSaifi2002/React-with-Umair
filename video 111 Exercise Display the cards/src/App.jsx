@@ -29,13 +29,13 @@ function App() {
   console.log(data); // console mein data ko log karte hai
 
   return (
-    <> // JSX return karte hai
+    <> {/* JSX return karte hai */}
       <div>
-        <h1>Data from API</h1> // ek heading ko render karte hai
+        <h1>Data from API</h1> {/* ek heading ko render karte hai */}
         {data ? ( // agar data available hai to
-          <div>
+          <div className='m-3 p-3 rounded-2xl bg-purple-900 text-white flex flex-col justify-center items-center'>
             {data.map((item) => ( // data ko map karte hai aur ek ek item ko render karte hai
-              <div key={item.id}> {/* / har item ke liye ek unique key provide karte hai */}
+              <div className='m-2 p-2 rounded-2xl bg-purple-500 text-2xl items-start' key={item.id}> {/* / har item ke liye ek unique key provide karte hai */}
                 <div>title : {item.title}</div> {/* item ka title ko render karte hai */}
                 <div>body : {item.body}</div> {/* item ka body ko render karte hai */}
                 <hr /> {/* ek horizontal line ko render karte hai */}
@@ -46,7 +46,7 @@ function App() {
           <p>Loading...</p> // agar data nahi available hai to "Loading..." ko render karte hai
         )}
       </div>
-      <button onClick={fetchData}>get data</button> // ek button ko render karte hai jise click karne par fetchData function call hoga
+      <button onClick={fetchData}>get data</button> {/* ek button ko render karte hai jise click karne par fetchData function call hoga */}
     </>
   );
 }
