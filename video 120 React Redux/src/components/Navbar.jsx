@@ -5,7 +5,7 @@ function Navbar() {
     const count = useSelector((state) => state.counter.value)
     return (
         <div>
-            This is Navbar {count}
+            This is Navbar {count} 
         </div>
     )
 }
