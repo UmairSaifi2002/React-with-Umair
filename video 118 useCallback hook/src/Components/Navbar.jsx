@@ -12,3 +12,6 @@ const Navbar = ({ adjective, getAdjective }) => {
 }
 
 export default memo(Navbar)
+// we are using memo here 
+// memo renders the component when props changes
+// when props not change then components donot renders
