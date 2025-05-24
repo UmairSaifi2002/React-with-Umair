@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 
 const Manager = () => {
 
-    const [form, setForm] = useState({site:'', user: '', pass: ''})
+    const [form, setForm] = useState({ site: '', user: '', pass: '' })
 
     const ref = useRef()
 
@@ -25,7 +25,14 @@ const Manager = () => {
     }
 
     const savePasword = () => {
-        console.log(form);        
+        console.log(form);
+        if (form.site === '' || form.user === '' || form.pass === '') {
+            alert('Please fill all fields')
+            return
+        }
+        setPasswordArray([...passwordArray, form])
+        localStorage.setItem('passwords', JSON.stringify([...passwordArray, form]))
+        setForm({ site: '', user: '', pass: '' })
     }
 
     const handleChange = (e) => {
@@ -65,13 +72,39 @@ const Manager = () => {
                         <lord-icon
                             src="https://cdn.lordicon.com/efxgwrkc.json"
                             trigger="hover"
-                            // style="width:250px;height:250px"
+                        // style="width:250px;height:250px"
                         >
                         </lord-icon>
                         Add Password
                     </button>
                 </div>
+                <div className="passwords">
+                    <h2 className='font-bold text-2xl py-4'>Your Passwords</h2>
+                    {passwordArray.length === 0 && <div className='text-center text-red-500'>No Passwords to Show</div>}
+                    {passwordArray.length !== 0 && <table className="table-auto w-full rounded-xl overflow-hidden">
+                        <thead className='bg-green-800 text-white'>
+                            <tr>
+                                <th className='py-2'>Site</th>
+                                <th className='py-2'>UserName</th>
+                                <th className='py-2'>Password</th>
+                            </tr>
+                        </thead>
+                        <tbody className='bg-green-100'>
+                            {passwordArray.map((item, index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td className='border border-white py-2 text-center w-32'><a href={item.site} target='_blank'>{item.site}</a></td>
+                                        <td className='border border-white py-2 text-center w-32'>{item.user}</td>
+                                        <td className='border border-white py-2 text-center w-32'>{item.pass}</td>
+                                    </tr>
+                                )
+                            })}
+                        </tbody>
+                    </table>}
+                </div>
             </div>
+
+
 
         </div>
     )
