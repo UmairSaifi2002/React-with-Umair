@@ -17,7 +17,10 @@ const Navbar = () => {
               <a className='hover:font-bold' href="#">Contact</a>
             </li>
           </ul>
-          <div></div>
+          <button className='flex items-center gap-2 bg-green-800 rounded-full px-4 py-2  border-green-900 cursor-pointer hover:bg-green-700 hover:font-bold'>
+            <img className='invert w-[30px] cursor-pointer' src="/icons8-github.svg" alt="github" />
+            <p>GitHub</p>
+          </button>
         </div>
       </nav>
     </>
