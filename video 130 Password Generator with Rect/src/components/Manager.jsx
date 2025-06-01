@@ -47,16 +47,63 @@ const Manager = () => {
     const savePasword = () => {
         // console.log(form);
         if (form.site === '' || form.user === '' || form.pass === '') {
-            alert('Please fill all fields')
+            toast('Invalid Inputs', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                // transition: Bounce,
+            });
             return
         }
-        setPasswordArray([...passwordArray, {...form, id: uuidv4()}])   
-        localStorage.setItem('passwords', JSON.stringify([...passwordArray, {...form, id: uuidv4()}]))
-        setForm({ site: '', user: '', pass: '' })
+        //save password logic
+        if (form.site.length < 5 || form.user.length < 3 || form.pass.length < 5) {
+            setPasswordArray([...passwordArray, { ...form, id: uuidv4() }])
+            localStorage.setItem('passwords', JSON.stringify([...passwordArray, { ...form, id: uuidv4() }]))
+            setForm({ site: '', user: '', pass: '' })
+            toast('Password saved Successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                // transition: Bounce,
+            });
+        }
     }
 
-    const deletePassword = () => {
+    const deletePassword = (id) => {
+        console.log("Deleting password with id:", id);
         //delete password logic
+        const updatePasswords = passwordArray.filter(item => item.id !== id)
+        setPasswordArray(updatePasswords)
+        localStorage.setItem('passwords', JSON.stringify(updatePasswords))
+        toast('Password deleted Successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            // transition: Bounce,
+        });
+    }
+
+    const editPassword = (id) => {
+        console.log('Editing Password with id:', id)
+        const temp = passwordArray.find(item => item.id === id)
+        console.log(temp.site, temp.user, temp.pass);
+        deletePassword(id)
+        setForm({ site: temp.site, user: temp.user, pass: temp.pass })
     }
 
     const handleChange = (e) => {
@@ -123,7 +170,7 @@ const Manager = () => {
 
                 <div className="passwords">
                     <h2 className='font-bold text-2xl py-4'>Your Passwords</h2>
-                    {passwordArray.length === 0 && <div className='text-center text-red-500'>No Passwords to Show</div>}
+                    {passwordArray.length === 0 && <div className='text-center font-bold text-red-500'>No Passwords to Show</div>}
                     {passwordArray.length !== 0 && <table className="table-auto w-full rounded-xl overflow-hidden">
                         <thead className='bg-green-800 text-white'>
                             <tr>
@@ -160,7 +207,7 @@ const Manager = () => {
                                             </div>
                                         </td>
                                         <td className='border border-white py-2 text-center flex items-center justify-center gap-4'>
-                                            <div className='Edit cursor-pointer'>
+                                            <div className='Edit cursor-pointer' onClick={() => editPassword(item.id)}>
                                                 <lord-icon
                                                     src="https://cdn.lordicon.com/cbtlerlm.json"
                                                     trigger="hover"
@@ -169,7 +216,7 @@ const Manager = () => {
                                                     style={{ "width": "25px", "height": "25px" }}>
                                                 </lord-icon>
                                             </div>
-                                            <div className='Delete cursor-pointer'>
+                                            <div className='Delete cursor-pointer' onClick={() => deletePassword(item.id)}>
                                                 <lord-icon
                                                     src="https://cdn.lordicon.com/nhqwlgwt.json"
                                                     trigger="morph"
