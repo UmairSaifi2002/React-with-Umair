@@ -5,10 +5,10 @@ import React from 'react'
 
 
 const Navbar = () => {
-    const { data: session } = useSession({})
-    if (session) {
+    const { data } = useSession()
+    if (data) {
         return (<>
-            Signed in as {session.user.email} <br />
+            Signed in as {data.user.email} <br />
             <button onClick={() => signOut()}>Sign out</button>
         </>)
     }

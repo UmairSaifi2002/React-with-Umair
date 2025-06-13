@@ -65,9 +65,9 @@ export default function Home() {
               <p>Your fans are available to help you Anytime.</p>
             </div>
           </div> */}
-          <iframe width={560} height={315} src="https://www.youtube.com/embed/QtaorVNAwbI?si=yukvYrJ8CvNVIK_E" title="YouTube video player" framerBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-          <iframe width={560} height={315} src="https://www.youtube.com/embed/sgNZcK8QIyc?si=xg6YN8bbR9CAZ3r0" title="YouTube video player" framerBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-          <iframe width={560} height={315} src="https://www.youtube.com/embed/T-KEXiSKa-k?si=sTZ-MCRAE7aYPEKO" title="YouTube video player" framerBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <iframe width={560} height={315} src="https://www.youtube.com/embed/QtaorVNAwbI?si=yukvYrJ8CvNVIK_E" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <iframe width={560} height={315} src="https://www.youtube.com/embed/sgNZcK8QIyc?si=xg6YN8bbR9CAZ3r0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+          <iframe width={560} height={315} src="https://www.youtube.com/embed/T-KEXiSKa-k?si=sTZ-MCRAE7aYPEKO" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
         </div>
 
       </div>
