@@ -7,10 +7,12 @@ import React from 'react'
 const Navbar = () => {
     const { data } = useSession()
     if (data) {
-        return (<>
-            Signed in as {data.user.email} <br />
-            <button onClick={() => signOut()}>Sign out</button>
-        </>)
+        return (
+            <>
+                Signed in as {data.user.email} <br />
+                <button onClick={() => signOut()}>Sign out</button>
+            </>
+        )
     }
     return (
         <>
