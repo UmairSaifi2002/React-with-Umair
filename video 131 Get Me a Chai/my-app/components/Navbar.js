@@ -2,6 +2,7 @@
 import { useSession, signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
 import React, { useState } from 'react'
+import { notFound, useRouter } from 'next/navigation'
 
 const Navbar = () => {
     const [showdropdown, setShowdropdown] = useState(false)
@@ -9,6 +10,11 @@ const Navbar = () => {
         setShowdropdown(!showdropdown)
     }
     const { data } = useSession()
+    // const router = useRouter()
+    const handleSignOut = () => {
+        signOut()
+        // router.push("/")
+    }
     // if (data) {
     //     return (
     //         <>
@@ -20,9 +26,11 @@ const Navbar = () => {
     return (
         <>
             <nav style={{ backgroundColor: 'oklch(0.18 0.07 264.85)' }} className='text-white p-4 flex justify-between items-center'>
-                <div className='logo font-bold text-xl flex items-center gap-2'>
-                    <img src="\tea.gif" alt="tea" width={44} />
-                    <span>GetMeaChai</span>
+                <div className='logo font-bold text-xl'>
+                    <Link href={"/"} className="flex items-center gap-2">
+                        <img src="\tea.gif" alt="tea" width={44} />
+                        <span>GetMeaChai</span>
+                    </Link>
                 </div>
 
                 {/* <ul className='gap-4'>
@@ -63,23 +71,25 @@ const Navbar = () => {
                                         <Link href="/dashboard" className="block px-4 py-2 hover:bg-gray-100">Dashboard</Link>
                                     </li>
                                     <li>
-                                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Settings</Link>
+                                        <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Your Page</Link>
                                     </li>
-                                    <li>
+                                    {/* <li>
                                         <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Earnings</Link>
-                                    </li>
+                                    </li> */}
                                     <li>
-                                        <button onClick={() => signOut()} className="block w-full text-left px-4 py-2 hover:bg-gray-100">Sign out</button>
+                                        <button onClick={() => handleSignOut()} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+                                            Sign Out
+                                        </button>
                                     </li>
                                 </ul>
                             </div>
                         )}
-    
+
                     </>}
-                    {data && <Link href={'/dashboard'}>
+                    {/* {data && <Link href={'/dashboard'}>
                         <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Dashboard</button>
-                    </Link>}
-                    {data && <button onClick={() => signOut()} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Out</button>}
+                    </Link>} */}
+                    {/* {data && <button onClick={() => signOut()} type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Sign Out</button>} */}
                     {!data &&
                         <Link href={"/login"}>
                             <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">LogIn</button>
