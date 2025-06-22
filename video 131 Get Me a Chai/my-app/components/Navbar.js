@@ -71,7 +71,7 @@ const Navbar = () => {
                             <div style={{ backgroundColor: 'oklch(0.18 0.07 264.85)' }} className="z-10 absolute bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                                 <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownDelayButton">
                                     <li>
-                                        <Link href="/dashboard" className="text-white block px-4 py-2 hover:bg-gray-500">Dashboard</Link>
+                                        <Link href="/dashboard" onMouseDown={(e) => e.preventDefault()} className="text-white block px-4 py-2 hover:bg-gray-500">Dashboard</Link>
                                     </li>
                                     <li>
                                         <Link href="#" className="text-white block px-4 py-2 hover:bg-gray-500">Your Page</Link>
@@ -79,11 +79,11 @@ const Navbar = () => {
                                     {/* <li>
                                         <Link href="#" className="block px-4 py-2 hover:bg-gray-100">Earnings</Link>
                                     </li> */}
-                                    {/* <li>
-                                        <button onClick={() => signOut()} className="text-white block w-full text-left px-4 py-2 hover:bg-gray-500">
+                                    <li>
+                                        <button onMouseDown={(e) => e.preventDefault()} onClick={() => signOut()} className="text-white block w-full text-left px-4 py-2 hover:bg-gray-500">
                                             Sign Out
                                         </button>
-                                    </li> */}
+                                    </li>
                                 </ul>
                             </div>
                         )}

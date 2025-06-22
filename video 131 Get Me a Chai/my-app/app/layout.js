@@ -24,13 +24,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_2px)] bg-[size:20px_20px] text-white`} >
         <SessionWrapper>
           <Navbar />
-          <div className="min-h-[88vh] bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_2px)] bg-[size:20px_20px] ">
-            {children}
+          <div className="min-h-screen bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_2px)] bg-[size:20px_20px] text-white flex flex-col">
+            <div className="flex-1 w-full mb-10">
+              {children}
+            </div>
           </div>
-          <Footer />
+          <Footer /> 
         </SessionWrapper>
       </body>
     </html>

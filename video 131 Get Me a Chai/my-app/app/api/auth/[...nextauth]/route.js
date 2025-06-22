@@ -29,7 +29,23 @@ export const authoptions = NextAuth({
     //   server: process.env.MAIL_SERVER,
     //   from: 'NextAuth.js <no-reply@example.com>'
     // }),
-  ]
+  ],
+  callbacks: {
+      async signIn({ user, account, profile, email, credentials }) {
+        if(account.provider === 'github'){
+          return true
+        }
+      },
+      // async redirect({ url, baseUrl }) {
+      //   return baseUrl
+      // },
+      // async session({ session, user, token }) {
+      //   return session
+      // },
+      // async jwt({ token, user, account, profile, isNewUser }) {
+      //   return token
+      // }
+    },
 })
 
 export { authoptions as GET, authoptions as POST }
